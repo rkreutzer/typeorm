@@ -18,7 +18,7 @@ export interface CapacitorConnectionOptions extends BaseConnectionOptions {
     /**
      * Storage Location
      */
-    //readonly location: string;
+    readonly location: string;
 
     /**
      * Encrypted DB indicator

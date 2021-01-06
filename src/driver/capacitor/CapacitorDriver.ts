@@ -1,5 +1,6 @@
 import {AbstractSqliteDriver} from "../sqlite-abstract/AbstractSqliteDriver";
 import {CapacitorConnectionOptions} from "./CapacitorConnectionOptions";
+import { PlatformTools } from "../../platform/PlatformTools";
 import {CapacitorQueryRunner} from "./CapacitorQueryRunner";
 import {QueryRunner} from "../../query-runner/QueryRunner";
 import {Connection} from "../../connection/Connection";
@@ -32,8 +33,8 @@ export class CapacitorDriver extends AbstractSqliteDriver {
         if (!this.options.database)
             throw new DriverOptionNotSetError("database");
 
-        //if (!this.options.location)
-            //throw new DriverOptionNotSetError("location");
+        if (!this.options.location)
+            throw new DriverOptionNotSetError("location");
 
         if (!this.options.encrypted)
         throw new DriverOptionNotSetError("encrypted");
@@ -87,9 +88,9 @@ export class CapacitorDriver extends AbstractSqliteDriver {
                 encrypted: this.options.encrypted,
                 mode: this.options.mode,
                 version: this.options.version,
-            }, this.options.extra || {});
+            });
 
-            this.sqlite.openDatabase(options, (db: any) => {
+            this.sqlite.createConnection(options, (db: any) => {
                 const databaseConnection = db;
 
                 // we need to enable foreign keys in sqlite to make sure all foreign key related features
@@ -110,7 +111,8 @@ export class CapacitorDriver extends AbstractSqliteDriver {
      */
     protected loadDependencies(): void {
         try {
-            this.sqlite = window.sqlitePlugin;
+           this.sqlite = window.sqlitePlugin;
+           this.sqlite = PlatformTools.load("@capacitor-community/sqlite");
 
         } catch (e) {
             throw new DriverPackageNotInstalledError("Capacitor-SQLite", "capacitor-sqlite-storage");
