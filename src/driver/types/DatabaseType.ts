@@ -9,6 +9,7 @@ export type DatabaseType =
     "mariadb"|
     "sqlite"|
     "cordova"|
+    "capacitor"|
     "react-native"|
     "nativescript" |
     "sqljs"|

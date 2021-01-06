@@ -5,6 +5,7 @@ import {SqlServerDriver} from "./sqlserver/SqlServerDriver";
 import {OracleDriver} from "./oracle/OracleDriver";
 import {SqliteDriver} from "./sqlite/SqliteDriver";
 import {CordovaDriver} from "./cordova/CordovaDriver";
+import {CapacitorDriver} from "./capacitor/CapacitorDriver";
 import {ReactNativeDriver} from "./react-native/ReactNativeDriver";
 import {NativescriptDriver} from "./nativescript/NativescriptDriver";
 import {SqljsDriver} from "./sqljs/SqljsDriver";
@@ -45,6 +46,8 @@ export class DriverFactory {
                 return new BetterSqlite3Driver(connection);
             case "cordova":
                 return new CordovaDriver(connection);
+            case "capacitor":
+                return new CapacitorDriver(connection);
             case "nativescript":
                 return new NativescriptDriver(connection);
             case "react-native":

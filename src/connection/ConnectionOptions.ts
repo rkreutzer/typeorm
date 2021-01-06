@@ -6,6 +6,7 @@ import {SqlServerConnectionOptions} from "../driver/sqlserver/SqlServerConnectio
 import {OracleConnectionOptions} from "../driver/oracle/OracleConnectionOptions";
 import {MongoConnectionOptions} from "../driver/mongodb/MongoConnectionOptions";
 import {CordovaConnectionOptions} from "../driver/cordova/CordovaConnectionOptions";
+import {CapacitorConnectionOptions} from "../driver/capacitor/CapacitorConnectionOptions";
 import {SqljsConnectionOptions} from "../driver/sqljs/SqljsConnectionOptions";
 import {ReactNativeConnectionOptions} from "../driver/react-native/ReactNativeConnectionOptions";
 import {NativescriptConnectionOptions} from "../driver/nativescript/NativescriptConnectionOptions";
@@ -30,6 +31,7 @@ export type ConnectionOptions =
     SapConnectionOptions|
     OracleConnectionOptions|
     CordovaConnectionOptions|
+    CapacitorConnectionOptions|
     NativescriptConnectionOptions|
     ReactNativeConnectionOptions|
     SqljsConnectionOptions|
